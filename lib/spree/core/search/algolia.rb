@@ -18,7 +18,7 @@ module Spree
             Rails.logger.debug { "Algolia match for #{query}: #{object_ids}" }
 
             # Prevent a sql injection via algolia
-            objects_ids_as_string = ActiveRecord::Base::sanitize object_ids.join(',')
+            objects_ids_as_string = ActiveRecord::Base::connection.quote object_ids.join(',')
 
             # Find the products in the scope and do a hackish order trick
             base_scope
