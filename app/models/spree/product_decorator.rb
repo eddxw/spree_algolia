@@ -6,7 +6,7 @@ Spree::Product.class_eval do
     attribute :foto, :product_url
   end
   def foto
-    master.images.first.attachment.url(:small)
+    master.images.first.nil? ? "/assets/noimage/small.png": master.images.first.attachment.url(:small)
   end
   def product_url
     Spree::Core::Engine.routes.url_helpers.product_path(self)
