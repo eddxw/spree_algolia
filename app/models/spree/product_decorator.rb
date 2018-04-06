@@ -2,7 +2,7 @@ Spree::Product.class_eval do
   include AlgoliaSearch
 
   algoliasearch index_name: 'athspree' do
-    attribute :name, :sku
+    attribute :name, :sku, :ean
     attribute :foto, :product_url
   end
   def foto
