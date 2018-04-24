@@ -5,6 +5,7 @@ Spree::Product.class_eval do
   algoliasearch index_name: 'athspree' do
     attribute :name, :sku, :ean
     attribute :foto, :product_url, :descripcion, :precio
+    attributesForFaceting [:name, :sku, :precio]
   end
   def foto
     master.images.first.nil? ? "https://s3.us-east-2.amazonaws.com/athermosillov2/Imagen+no+disponible.jpg": master.images.first.attachment.url(:small)
