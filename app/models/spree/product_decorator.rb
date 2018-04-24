@@ -15,6 +15,6 @@ Spree::Product.class_eval do
     strip_tags(:description)[0..200]
   end
   def precio
-    cvp = master.volume_prices.collect{|cvp| cvp.amount}.sort.reverse || [master.price]
+    cvp = master.volume_prices.any? ? master.volume_prices.collect{|cvp| cvp.amount}.sort.reverse : [master.price]
   end
 end
