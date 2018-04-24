@@ -1,5 +1,6 @@
 Spree::Product.class_eval do
   include AlgoliaSearch
+  include ActionView::Helpers::TextHelper
 
   algoliasearch index_name: 'athspree' do
     attribute :name, :sku, :ean
